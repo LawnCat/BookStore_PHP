@@ -1,0 +1,138 @@
+.bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -10;
+    object-fit: cover;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.main {
+
+    width: 500px;
+    height: 750px;
+    border: 1px solid black;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    border-radius: 20px;
+    box-shadow: 0 0 20px 20px rgba(132, 132, 218, 0.6);
+    padding: 10px;
+    background-color: rgb(186, 173, 173, .4);
+    backdrop-filter: blur(15px) saturate(1.8);
+
+
+}
+
+body,
+html {
+    width: 100%;
+    height: 100%;
+}
+
+
+form>div {
+    /* border: 1px solid black; */
+    padding: 10px;
+}
+
+.head {
+    text-align: center;
+    color: aliceblue;
+    font-size: 55px;
+}
+
+.account,
+.userName,
+.gender,
+.phone,
+.password {
+    /* padding: 20px; */
+    margin: 10px;
+    font-weight: 30px;
+    font-size: 23px;
+    color: rgb(255, 255, 255);
+    position: relative;
+    top: 20px;
+    left: 80px;
+}
+
+input {
+    border: none;
+    background-color: transparent;
+    box-shadow: 0 0 19px 6px rgb(232, 174, 174);
+    color: rgb(0, 0, 0);
+    font-size: 19px;
+    outline: none;
+    border: 1px solid rgba(217, 212, 212, 0.4);
+    border-radius: 10px;
+    height: 40px;
+    width: 300px;
+
+}
+
+/* 修改input中的文字样式 */
+input::-webkit-input-placeholder {
+    color: rgb(249, 249, 251);
+    font-size: 16px;
+}
+
+
+
+.forget {
+    text-align: center;
+    margin-left: 350px;
+    height: 10px;
+    line-height: 10px;
+    border-radius: 10px;
+    /* background-color: red; */
+    width: 100px;
+    /* bor */
+    /* border: 1px solid black; */
+    color: aliceblue;
+    cursor: pointer;
+}
+
+.bottom {
+    width: 500px;
+    height: 40px;
+    /* border: 1px solid black; */
+    margin: 40px 90px;
+}
+
+.bottom>div {
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    float: left;
+    margin-right: 15px;
+    width: 303px;
+    height: 56px;
+    text-align: center;
+    line-height: 60px;
+    font-size: 30px;
+    color: white;
+    border-radius: 15px;
+    box-shadow: 0 0 30px 8px rgb(208, 239, 247);
+}
+
+.sign:hover,
+.register:hover {
+    box-shadow: 0 0 40px 10px #f1939c;
+}
+
+.btn_{
+    background-color:transparent;
+    border: transparent;
+    font-size: 25px;
+    cursor: pointer;
+}

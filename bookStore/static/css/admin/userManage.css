@@ -1,0 +1,27 @@
+.nav_font{
+    font-size: 31px !important;
+}
+/* .nav_context{
+    padding: 0 100px !important;
+} */
+.navbar-nav >li {
+    margin: 0 39px !important;
+}
+/* #btn_head{a
+
+    margin: 0px 147px;
+    padding: 0 10px;
+} */
+#btn_head > button{
+    margin: 0 10px;
+}
+.btn-lg{
+    width: 170px;
+}
+.add_user {
+    margin: 20px 130px !important;
+
+}
+.add_user > input{
+    margin: 10px -1px !important;
+}

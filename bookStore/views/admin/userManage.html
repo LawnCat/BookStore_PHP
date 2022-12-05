@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>读者管理</title>
+    <link rel="stylesheet" href="../../static/pkg/bootstrap-4.6.1-dist/css/bootstrap.min.css">
+    <script src="../../static/pkg/jQuery-3.6.1/jquery-3.6.1.min.js"></script>
+    <link rel="stylesheet" href="../../static/css/admin/userManage.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Content here -->
+        <!-- 导航栏 -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light nav_font">
+            <a class="navbar-brand" href="#" style="font-size:35px ;">玉华图书馆</a>
+            <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+             -->
+            <div class="collapse navbar-collapse nav_context" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="../../views/admin/bookManage.html">图书信息 <span
+                                class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">读者信息</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../views/admin/login.html">退出</a>
+                    </li>
+
+                </ul>
+            </div>
+        </nav>
+        <div id="btn_head">
+
+            <!-- 添加读者信息 -->
+            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#add_user">
+                添加读者信息
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="add_user" data-backdrop="static" data-keyboard="false" tabindex="-1"
+                aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel"> 添加读者</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <form action="../../controllers/admin/addUser.php" method="post">
+                            <div class="modal-body  add_user">
+                                <span>请输入读者姓名</span>
+                                <br>
+                                <input type="text" name="userName" placeholder="姓名">
+                                <br>
+                                <label for="">请输入读者性别</label>
+                                <br>
+                                <input type="text" name="userGender" placeholder="性别">
+                                <br>
+                                <label for="">请输入读者账号</label>
+                                <br>
+                                <input type="text" name="userAccount" placeholder="账号">
+                                <br>
+                                <label for="">请输入读者密码</label>
+                                <br>
+                                <input type="text" name="userPassword" placeholder="密码">
+                                <br>
+                                <label for="">请输入读者电话</label>
+                                <br>
+                                <input type="text" name="userPhone" placeholder="电话">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                                <button type="submit" class="btn btn-primary">添加</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+            <!-- 删除读者信息 -->
+
+            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#userDelete">
+                删除读者信息
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="userDelete" data-backdrop="static" data-keyboard="false" tabindex="-1"
+                aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel"> 删除读者信息</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <form action="../../controllers/admin/deleteUser.php" method="get">
+                            <div class="modal-body">
+                                <span>请输入读者姓名</span>
+                                <input type="text" name="userName" placeholder="删除前请三思">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                                <button type="submit" class="btn btn-primary">删除</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- <button type="button" class="btn btn-secondary btn-lg"></button> -->
+        </div>
+
+
+
+        <!-- 用户列表 -->
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">姓名</th>
+                    <th scope="col">性别</th>
+                    <th scope="col">账号</th>
+                    <th scope="col">密码</th>
+                    <th scope="col">手机号码</th>
+                    <th scope="col">已借书籍</th>
+                </tr>
+            </thead>
+            <tbody id="userList">
+            </tbody>
+        </table>
+
+    </div>
+</body>
+<script src="../../static/pkg/popper.js/popper.min.js"></script>
+<script src="../../static/pkg/bootstrap-4.6.1-dist/js/bootstrap.min.js"></script>
+
+<script>
+
+    // 打印出用户列表
+    fetch("../../apis/admin/getUserList.php", {
+        method: "GET",
+        credentials: "include",
+        mode: "cors",
+
+    }).then(response => {
+        return response.json();
+    }
+    ).then(data => {
+        var count = 1
+        let body = document.querySelector("#userList");
+        data.forEach(element => {
+
+            body.innerHTML += `
+            <tr>
+                <th scope="row">${count++}</th>
+                <td>${element[0]}</td>
+                <td>${element[1]}</td>
+                <td>${element[2]}</td>
+                <td>${element[3]}</td>
+                <td>${element[4]}</td>
+                <td>${element[5]}</td>
+            </tr>
+            
+            `
+        });
+        console.log(data);
+    })
+</script>
+
+</html>

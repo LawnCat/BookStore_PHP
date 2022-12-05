@@ -1,0 +1,34 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+/* 背景
+body {
+    background-image: url("../../img/user/wallhaven-3kg9ry_2560x1080.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+} */
+
+.nav-link{
+    font-size: 25px;
+}
+.head_imag{
+    width: 100px;
+    height: 200px;
+}
+.head_btn{
+    color: rgb(0, 0, 0);
+    font-size: 25px;
+    width: 270px;
+}
+.head_btn_first{
+    font-size: 27px;
+    width: 200px;
+}
+.card_context{
+
+    background-color: rgb(255, 255, 255) !important;
+    margin: 0 auto;
+}

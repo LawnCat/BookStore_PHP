@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图书中心</title>
+    <script src="../../static/pkg/jQuery-3.6.1/jquery-3.6.1.min.js"></script>
+    <link rel="stylesheet" href="../../static/pkg/bootstrap-4.6.1-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../static/css/user/index.css">
+    <script src="../../static/js/user/index.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Content here -->
+        <nav class="nav nav-pills flex-column flex-sm-row">
+            <!-- <a class="flex-sm-fill text-sm-center nav-link active" href="#">首页</a> -->
+            <button type="button" class="btn btn-primary head_btn_first">首页</button>
+
+
+
+
+            <!-- Button trigger modal -->
+            <!-- <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#borrowBook">
+                借阅书籍
+            </button> -->
+            <button type="button" class="btn btn-outline-light head_btn" data-toggle="modal"
+                data-target="#borrowBook">借阅书籍</button>
+
+
+            <!-- Modal -->
+            <div class="modal fade" id="borrowBook" data-backdrop="static" data-keyboard="false" tabindex="-1"
+                aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">借阅书籍</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                        <form action="../../controllers/user/borrowBook.php" method="post">
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">请输入书名</label>
+                                    <input type="text" class="form-control" id="exampleInputEmail1"
+                                        aria-describedby="emailHelp" name="book_name">
+                                    <small id="emailHelp" class="form-text text-muted">请勿虽坏书籍</small>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">点击借阅</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <!-- 归还书籍 -->
+            <button type="button" class="btn btn-outline-light head_btn" data-toggle="modal"
+                data-target="#returnBook">归还书籍</button>
+            <!-- Modal -->
+            <div class="modal fade" id="returnBook" data-backdrop="static" data-keyboard="false" tabindex="-1"
+                aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">归还书籍</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <form action="../../controllers/user/returnBook.php" method="post">
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">请输入书名</label>
+                                    <input type="text" class="form-control" id="exampleInputEmail1"
+                                        aria-describedby="emailHelp" name="book_name">
+                                    <small id="emailHelp" class="form-text text-muted">欢迎下次借阅</small>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">点击归还</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- 个人中心 -->
+            <button type="button" class="btn btn-outline-light head_btn" data-toggle="modal"
+                data-target="#userInfo">个人中心</button>
+            <!-- Modal -->
+            <div class="modal fade" id="userInfo" data-backdrop="static" data-keyboard="false" tabindex="-1"
+                aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">个人信息</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                        <div id="card_info"></div>
+
+                        <!-- <div class="card border-light mb-3 card_context" style="max-width: 18rem;">
+                            <div class="card-header" style="font-size: 30px;">陈勇 <span
+                                    class="badge badge-warning">超级VIP</span>
+                            </div>
+
+
+
+                            <div class="card-body">
+
+
+                                <h5 class="card-text"><svg t="1667878817114" class="icon" viewBox="0 0 1024 1024"
+                                        version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4255" width="25"
+                                        height="25">
+                                        <path
+                                            d="M620.256 806.176a32 32 0 0 1-28.256-31.776v-80.736a32 32 0 0 1 13.216-25.92c52.864-38.272 99.168-99.68 124.736-169.152a32 32 0 0 1 19.584-19.2c9.76-3.36 21.536-24.224 32.416-70.72 5.92-25.152-1.024-40.96-16.576-50.4a32 32 0 0 1-15.264-24.48C736.448 181.312 650.144 96 514.24 96c-138.24 0-227.936 88.064-240.672 242.432a32 32 0 0 1-15.04 24.544c-16.416 10.24-22.272 23.36-16.224 44.032 11.392 38.88 23.84 60.352 36.8 68.48a32 32 0 0 1 13.12 16.384c25.088 70.496 72.224 133.536 126.72 173.504a32 32 0 0 1 13.056 25.792V774.4a32 32 0 0 1-28.256 31.776c-125.12 14.72-212.608 54.4-225.952 88.672 2.304 1.056 5.12 2.176 8.384 3.296 17.184 6.016 43.52 11.52 77.12 16.096 65.504 8.896 155.168 13.76 248.704 13.76s183.2-4.864 248.704-13.76c33.6-4.576 59.936-10.08 77.12-16.096 3.296-1.12 6.08-2.24 8.384-3.296-13.344-34.272-100.832-73.92-225.92-88.64z m35.744-59.776c151.36 22.656 256 79.168 256 157.376C912 970.784 755.84 992 512 992s-400-21.216-400-88.224c0-78.208 104.64-134.72 256-157.376V706.88c-56.64-45.536-104.576-110.944-132.576-184.128-23.936-19.392-40.928-51.296-54.528-97.792-12.8-43.648 0.064-81.344 30.336-106.592C231.456 140.48 346.336 32 514.24 32c165.6 0 276.992 105.728 298.08 281.44 29.44 24.864 42.72 63.904 31.968 109.856-13.312 56.768-30.848 92.512-58.976 109.632-28.448 70.624-74.976 133.184-129.312 176.576v36.896z"
+                                            p-id="4256" fill="#2c2c2c"></path>
+                                    </svg></h5>
+                                <h5 class="card-title">
+                                    账号:2109830268</h5>
+
+
+                                <p class="card-text"> <svg t="1667878763465" class="icon" viewBox="0 0 1024 1024"
+                                        version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2696" width="32"
+                                        height="25">
+                                        <path
+                                            d="M545.18272 342.68672a234.21952 234.21952 0 1 0-275.79904 231.37792v300.0832a35.13344 35.13344 0 1 0 70.26688 0V576a235.13088 235.13088 0 0 0 205.53216-233.31328zM310.9632 507.29984a164.61824 164.61824 0 1 1 163.95264-164.61312 164.46976 164.46976 0 0 1-163.95264 164.61312z m434.47808-59.08992V165.14048a35.13344 35.13344 0 1 0-70.26688 0v284.48256a234.24512 234.24512 0 1 0 70.26688-1.41312z m-30.44864 397.72672a164.61312 164.61312 0 1 1 163.95776-164.61824 164.46464 164.46464 0 0 1-163.95776 164.61312z"
+                                            fill="#2c2c2c" p-id="2697"></path>
+                                        <path
+                                            d="M502.2464 724.51072h-395.4176a35.28704 35.28704 0 0 1 0-70.56896h395.4176a35.28704 35.28704 0 0 1 0 70.56896z m420.01408-328.13568a34.95424 34.95424 0 0 1-24.42752-9.92256L710.10816 204.2368l-172.3904 174.08a35.21536 35.21536 0 1 1-49.85344-49.75104l187.008-188.84096a49.3312 49.3312 0 0 1 69.21728-0.67584l202.5984 196.67456a35.38432 35.38432 0 0 1 0.83968 49.88928 34.98496 34.98496 0 0 1-25.2672 10.76224z"
+                                            fill="#2c2c2c" p-id="2698"></path>
+                                    </svg> </p>
+                                <p class="card-text">性别:&nbsp 男</p>
+
+                                <p class="card-text">
+                                    <svg t="1667878939804" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                        xmlns="http://www.w3.org/2000/svg" p-id="5348" width="25" height="25">
+                                        <path
+                                            d="M947.701961 623.435294l-694.713725 0q-11.043137 0-23.090196 6.023529t-22.588235 18.070588-17.066667 28.611765-6.52549 37.647059 5.521569 39.152941 14.556863 32.12549 22.086275 22.086275 28.109804 8.031373l693.709804 0q-12.047059-12.047059-21.082353-27.105882-8.031373-13.05098-14.556863-31.121569t-6.52549-41.160784q0-26.101961 6.52549-43.168627t14.556863-28.109804q9.035294-12.047059 21.082353-21.082353zM947.701961 897.505882q0 17.066667-22.086275 17.066667l-733.866667 0q-34.133333 0-57.223529-14.054902t-37.647059-38.65098-20.580392-58.729412-6.023529-73.286275l0-582.27451q0-77.301961 41.160784-111.937255t117.458824-34.635294l34.133333 0 68.266667 0 93.364706 0q51.2 0 104.909804-0.501961t104.909804-0.501961l94.368627 0 70.27451 0 35.137255 0q28.109804 0 49.192157 11.545098t35.137255 32.12549 21.584314 48.690196 7.529412 60.235294l0 406.588235q-191.74902 0-345.34902-1.003922l-128.501961 0q-64.25098 0-114.94902-0.501961t-83.827451-0.501961l-37.145098 0q-21.082353 0-41.160784 12.54902t-36.141176 34.133333-26.101961 50.196078-10.039216 59.733333q0 38.14902 10.541176 68.768627t27.607843 51.701961 37.647059 32.627451 40.658824 11.545098l685.678431 0q8.031373 0 14.556863 4.517647t6.52549 14.556863zM515.011765 0l0 388.517647 77.301961-108.423529 76.298039 108.423529 0-388.517647-153.6 0z"
+                                            p-id="5349" fill="#2c2c2c">
+                                        </path>
+                                    </svg>
+                                <p class="card-text">已借书籍: 高等数学</p>
+
+                                <svg t="1667879571011" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                    xmlns="http://www.w3.org/2000/svg" p-id="6542" width="29" height="29">
+                                    <path
+                                        d="M647.786667 845.397333c-76.053333-24.234667-157.248-76.266667-240.917334-163.648-81.152-84.757333-131.626667-164.864-157.504-238.442666-16.832-47.829333-21.056-85.546667-18.581333-111.402667a50.986667 50.986667 0 0 1 0.384-3.221333l0.341333-3.349334c0.469333-18.112 10.922667-46.144 22.122667-59.264a414.677333 414.677333 0 0 1 34.56-39.466666c9.834667-9.877333 19.306667-18.133333 27.946667-24.192 12.885333-9.045333 21.162667-11.328 23.317333-10.069334-0.213333 0.021333 1.045333 1.322667 2.837333 3.776 3.157333 4.288 7.082667 10.517333 11.669334 18.410667a1030.4 1030.4 0 0 1 31.04 59.264 3473.109333 3473.109333 0 0 1 58.368 126.229333c1.706667 3.84 0.938667 12.309333-1.344 15.722667l-47.04 69.824a27.52 27.52 0 0 0-3.370667 7.424c-7.509333 25.92 12.309333 66.517333 73.834667 129.216 37.504 38.186667 70.293333 63.061333 98.496 77.077333 18.944 9.429333 33.28 12.8 42.730666 12.586667 4.48-0.192 8.256-1.450667 11.52-3.626667l69.546667-46.933333c3.584-2.410667 12.416-3.349333 16.533333-1.685333l8.704 3.477333a3178.794667 3178.794667 0 0 1 91.477334 38.464c7.04 3.114667 13.802667 6.144 20.266666 9.088 21.76 9.962667 39.637333 18.773333 52.629334 25.984 6.784 3.797333 12.074667 7.061333 15.573333 9.642667 1.429333 1.066667 2.432 1.877333 2.901333 2.346666a10.602667 10.602667 0 0 1-2.197333-3.968l1.472 3.2c4.522667 8.064-16.853333 38.122667-51.562667 68.714667a626.624 626.624 0 0 1-20.544 17.344 21.333333 21.333333 0 1 0 26.453334 33.450667 669.056 669.056 0 0 0 22.293333-18.794667c52.48-46.293333 80.661333-85.866667 60.544-121.642667l1.472 3.2c-6.037333-16.64-32.277333-31.274667-91.306667-58.261333-6.613333-3.050667-13.546667-6.144-20.736-9.322667a2876.629333 2876.629333 0 0 0-101.610666-42.538666c-17.109333-6.912-40.874667-4.416-56.234667 5.930666l-69.546667 46.933334 10.922667-3.626667c0.576-0.021333-0.554667-0.149333-2.986667-0.725333a92.693333 92.693333 0 0 1-19.306666-7.424c-23.68-11.776-52.693333-33.792-87.04-68.778667-51.797333-52.757333-65.322667-80.490667-63.317334-87.445333a16.021333 16.021333 0 0 1-1.92 4.074666l46.741334-69.376c10.474667-15.573333 12.586667-39.530667 5.013333-56.725333l-4.138667-9.365333a3937.258667 3937.258667 0 0 0-46.122666-100.202667c-3.029333-6.293333-5.973333-12.416-8.874667-18.304-30.997333-63.082667-48.512-93.290667-64.213333-100.48-18.922667-11.157333-42.261333-4.672-67.456 12.992-10.922667 7.658667-22.186667 17.472-33.642667 28.970667a456.597333 456.597333 0 0 0-37.610667 42.88c-16.853333 19.712-30.805333 57.173333-31.509333 84.906666l0.341333-3.349333c-0.277333 1.493333-0.597333 3.797333-0.896 6.954667-3.050667 31.893333 1.877333 75.818667 20.821334 129.621333 27.946667 79.466667 81.664 164.736 166.912 253.781333 88.490667 92.416 175.765333 148.330667 258.773333 174.805334 27.797333 8.853333 53.888 13.952 77.973333 15.957333a21.333333 21.333333 0 0 0 3.52-42.517333 310.570667 310.570667 0 0 1-68.522666-14.08z"
+                                        fill="#3D3D3D" p-id="6543"></path>
+                                </svg>
+
+                                <p class="card-text">电话: 18236416916</p>
+
+
+                            </div>
+                        </div> -->
+
+
+
+
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Understood</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+            <!-- 
+            <a class="flex-sm-fill text-sm-center nav-link" href="#">借阅图书</a>
+            <a class="flex-sm-fill text-sm-center nav-link" href="#">归还图书</a>
+            <a class="flex-sm-fill text-sm-center nav-link" href="#">个人中心</a> -->
+            <a class="flex-sm-fill text-sm-center nav-link" href="../../controllers/user/loginOut.php">退出</a>
+        </nav>
+
+
+
+
+        <!-- <div class="card ">
+            <h5 class="card-header">#图书ID:#### &nbsp
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp状态:##
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp作者:####
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp价格:##
+
+            </h5>
+            <div class="card-body">
+                <h5 class="card-title" style="font-size: 28px; display: inline;">书名</h5>
+
+                <p class="card-text">内容#####</p>
+                <form action="../../controllers/user/borrowBook.php" method="post">
+                    <input type="text" value="asdf" style="display: none;" name="book_name">
+                
+
+
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
+                        点击借读书籍
+                    </button>
+
+                    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false"
+                        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="staticBackdropLabel">光华图书馆</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <form action="../../controllers/user/borrowBook.php" method="post">
+
+                                    <h5> &nbsp&nbsp&nbsp请确认是否借读此书籍</h5>
+                                    <div class="modal-footer">
+                                        <input type="text" value="adf" style="display: none;">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                                        <button type="submit" class="btn btn-primary">确认</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div> -->
+        <div class="card context">
+            <div class="card-header">
+                Quote
+            </div>
+            <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                    <p>我一生的嗜好，除了革命之外，就是读书。我一天不读书，就不能够生活。</p>
+                    <footer class="blockquote-footer"> <cite title="Source Title">孙中山</cite>
+                    </footer>
+                </blockquote>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../../static/pkg/popper.js/popper.min.js"></script>
+
+<script src="../../static/pkg/bootstrap-4.6.1-dist/js/bootstrap.min.js"></script>
+<script>
+
+    fetch("../../apis/user/getBookList.php", {
+        method: "GET",
+        credentials: "include",
+        mode: "cors",
+    }).then(reponse => {
+        return reponse.json();
+
+    }).then(data => {
+        let body = document.querySelector(".context");
+        var count = 1;
+        data.forEach(element => {
+            body.innerHTML += `
+            <div class="card" >
+                <h5 class="card-header">#图书ID:00${count} &nbsp
+                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp状态:${element[4]}
+                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp作者:${element[1]}
+                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp价格:${element[2]}元
+                </h5>
+                <div class="card-body">
+                    <h5 class="card-title" style="font-size: 28px; display: inline;">《${element[0]}》</h5>
+                    <p class="card-text">&nbsp&nbsp&nbsp&nbsp ${element[3]}</p>
+                    <!-- 添加图书信息 -->
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Borrow${count}">
+                        点击借读书籍
+                    </button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="Borrow${count++}" data-backdrop="static" data-keyboard="false"
+                        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="staticBackdropLabel">光华图书馆</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <form action="../../controllers/user/borrowBook.php" method="post">
+
+                                    <h5> &nbsp&nbsp&nbsp请确认是否借读此书籍</h5>
+                                    <div class="modal-footer">
+
+
+                                        <input type="text" value="${element[0]}" style="display: none;" name="book_name" id="first">
+
+
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                                        <button type="submit" class="btn btn-primary">确认</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            `
+        });
+        console.log(data);
+    })
+</script>
+
+<!-- 获取当前登录用户名字 -->
+<script>
+
+    fetch("../../apis/user/getUserName.php", {
+        method: "GET",
+        credentials: "include",
+        mode: "cors",
+    }).then(response => {
+        return response.json();
+    }).then(data => {
+
+
+        // first.innerHTML = `
+        // <input type="text" value="${data}" style="display: none;" name="user_name">
+        // `
+        console.log(data);
+    })
+
+
+</script>
+
+
+<!-- 获取当前用户的详细信息 -->
+
+<script>
+
+    fetch("../../apis/user/getUserInfo.php", {
+        method: "GET",
+        credentials: "include",
+        mode: "cors",
+    }).then(response => {
+        return response.json();
+    }).then(data => {
+        var card_context = document.querySelector("#card_info");
+        data.forEach(element => {
+
+            card_context.innerHTML = `
+            
+            
+            
+            
+            
+
+            <div class="card border-light mb-3 card_context" style="max-width: 18rem;">
+                            <div class="card-header" style="font-size: 30px;">${element[0]} <span
+                                    class="badge badge-warning">超级VIP</span>
+                            </div>
+
+
+
+                            <div class="card-body">
+
+
+                                <!-- 账号 -->
+                                <h5 class="card-text"><svg t="1667878817114" class="icon" viewBox="0 0 1024 1024"
+                                        version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4255" width="25"
+                                        height="25">
+                                        <path
+                                            d="M620.256 806.176a32 32 0 0 1-28.256-31.776v-80.736a32 32 0 0 1 13.216-25.92c52.864-38.272 99.168-99.68 124.736-169.152a32 32 0 0 1 19.584-19.2c9.76-3.36 21.536-24.224 32.416-70.72 5.92-25.152-1.024-40.96-16.576-50.4a32 32 0 0 1-15.264-24.48C736.448 181.312 650.144 96 514.24 96c-138.24 0-227.936 88.064-240.672 242.432a32 32 0 0 1-15.04 24.544c-16.416 10.24-22.272 23.36-16.224 44.032 11.392 38.88 23.84 60.352 36.8 68.48a32 32 0 0 1 13.12 16.384c25.088 70.496 72.224 133.536 126.72 173.504a32 32 0 0 1 13.056 25.792V774.4a32 32 0 0 1-28.256 31.776c-125.12 14.72-212.608 54.4-225.952 88.672 2.304 1.056 5.12 2.176 8.384 3.296 17.184 6.016 43.52 11.52 77.12 16.096 65.504 8.896 155.168 13.76 248.704 13.76s183.2-4.864 248.704-13.76c33.6-4.576 59.936-10.08 77.12-16.096 3.296-1.12 6.08-2.24 8.384-3.296-13.344-34.272-100.832-73.92-225.92-88.64z m35.744-59.776c151.36 22.656 256 79.168 256 157.376C912 970.784 755.84 992 512 992s-400-21.216-400-88.224c0-78.208 104.64-134.72 256-157.376V706.88c-56.64-45.536-104.576-110.944-132.576-184.128-23.936-19.392-40.928-51.296-54.528-97.792-12.8-43.648 0.064-81.344 30.336-106.592C231.456 140.48 346.336 32 514.24 32c165.6 0 276.992 105.728 298.08 281.44 29.44 24.864 42.72 63.904 31.968 109.856-13.312 56.768-30.848 92.512-58.976 109.632-28.448 70.624-74.976 133.184-129.312 176.576v36.896z"
+                                            p-id="4256" fill="#2c2c2c"></path>
+                                    </svg></h5>
+                                <h5 class="card-title">
+                                    账号:${element[1]}</h5>
+
+
+                                <!-- 性别 -->
+                                <p class="card-text"> <svg t="1667878763465" class="icon" viewBox="0 0 1024 1024"
+                                        version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2696" width="32"
+                                        height="25">
+                                        <path
+                                            d="M545.18272 342.68672a234.21952 234.21952 0 1 0-275.79904 231.37792v300.0832a35.13344 35.13344 0 1 0 70.26688 0V576a235.13088 235.13088 0 0 0 205.53216-233.31328zM310.9632 507.29984a164.61824 164.61824 0 1 1 163.95264-164.61312 164.46976 164.46976 0 0 1-163.95264 164.61312z m434.47808-59.08992V165.14048a35.13344 35.13344 0 1 0-70.26688 0v284.48256a234.24512 234.24512 0 1 0 70.26688-1.41312z m-30.44864 397.72672a164.61312 164.61312 0 1 1 163.95776-164.61824 164.46464 164.46464 0 0 1-163.95776 164.61312z"
+                                            fill="#2c2c2c" p-id="2697"></path>
+                                        <path
+                                            d="M502.2464 724.51072h-395.4176a35.28704 35.28704 0 0 1 0-70.56896h395.4176a35.28704 35.28704 0 0 1 0 70.56896z m420.01408-328.13568a34.95424 34.95424 0 0 1-24.42752-9.92256L710.10816 204.2368l-172.3904 174.08a35.21536 35.21536 0 1 1-49.85344-49.75104l187.008-188.84096a49.3312 49.3312 0 0 1 69.21728-0.67584l202.5984 196.67456a35.38432 35.38432 0 0 1 0.83968 49.88928 34.98496 34.98496 0 0 1-25.2672 10.76224z"
+                                            fill="#2c2c2c" p-id="2698"></path>
+                                    </svg> </p>
+                                <p class="card-text">性别:&nbsp ${element[2]}</p>
+
+                                <!-- 已借书籍 -->
+                                <p class="card-text">
+                                    <svg t="1667878939804" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                        xmlns="http://www.w3.org/2000/svg" p-id="5348" width="25" height="25">
+                                        <path
+                                            d="M947.701961 623.435294l-694.713725 0q-11.043137 0-23.090196 6.023529t-22.588235 18.070588-17.066667 28.611765-6.52549 37.647059 5.521569 39.152941 14.556863 32.12549 22.086275 22.086275 28.109804 8.031373l693.709804 0q-12.047059-12.047059-21.082353-27.105882-8.031373-13.05098-14.556863-31.121569t-6.52549-41.160784q0-26.101961 6.52549-43.168627t14.556863-28.109804q9.035294-12.047059 21.082353-21.082353zM947.701961 897.505882q0 17.066667-22.086275 17.066667l-733.866667 0q-34.133333 0-57.223529-14.054902t-37.647059-38.65098-20.580392-58.729412-6.023529-73.286275l0-582.27451q0-77.301961 41.160784-111.937255t117.458824-34.635294l34.133333 0 68.266667 0 93.364706 0q51.2 0 104.909804-0.501961t104.909804-0.501961l94.368627 0 70.27451 0 35.137255 0q28.109804 0 49.192157 11.545098t35.137255 32.12549 21.584314 48.690196 7.529412 60.235294l0 406.588235q-191.74902 0-345.34902-1.003922l-128.501961 0q-64.25098 0-114.94902-0.501961t-83.827451-0.501961l-37.145098 0q-21.082353 0-41.160784 12.54902t-36.141176 34.133333-26.101961 50.196078-10.039216 59.733333q0 38.14902 10.541176 68.768627t27.607843 51.701961 37.647059 32.627451 40.658824 11.545098l685.678431 0q8.031373 0 14.556863 4.517647t6.52549 14.556863zM515.011765 0l0 388.517647 77.301961-108.423529 76.298039 108.423529 0-388.517647-153.6 0z"
+                                            p-id="5349" fill="#2c2c2c">
+                                        </path>
+                                    </svg>
+                                <p class="card-text">已借书籍: ${element[4]}</p>
+
+                                <!-- 电话 -->
+                                <svg t="1667879571011" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                    xmlns="http://www.w3.org/2000/svg" p-id="6542" width="29" height="29">
+                                    <path
+                                        d="M647.786667 845.397333c-76.053333-24.234667-157.248-76.266667-240.917334-163.648-81.152-84.757333-131.626667-164.864-157.504-238.442666-16.832-47.829333-21.056-85.546667-18.581333-111.402667a50.986667 50.986667 0 0 1 0.384-3.221333l0.341333-3.349334c0.469333-18.112 10.922667-46.144 22.122667-59.264a414.677333 414.677333 0 0 1 34.56-39.466666c9.834667-9.877333 19.306667-18.133333 27.946667-24.192 12.885333-9.045333 21.162667-11.328 23.317333-10.069334-0.213333 0.021333 1.045333 1.322667 2.837333 3.776 3.157333 4.288 7.082667 10.517333 11.669334 18.410667a1030.4 1030.4 0 0 1 31.04 59.264 3473.109333 3473.109333 0 0 1 58.368 126.229333c1.706667 3.84 0.938667 12.309333-1.344 15.722667l-47.04 69.824a27.52 27.52 0 0 0-3.370667 7.424c-7.509333 25.92 12.309333 66.517333 73.834667 129.216 37.504 38.186667 70.293333 63.061333 98.496 77.077333 18.944 9.429333 33.28 12.8 42.730666 12.586667 4.48-0.192 8.256-1.450667 11.52-3.626667l69.546667-46.933333c3.584-2.410667 12.416-3.349333 16.533333-1.685333l8.704 3.477333a3178.794667 3178.794667 0 0 1 91.477334 38.464c7.04 3.114667 13.802667 6.144 20.266666 9.088 21.76 9.962667 39.637333 18.773333 52.629334 25.984 6.784 3.797333 12.074667 7.061333 15.573333 9.642667 1.429333 1.066667 2.432 1.877333 2.901333 2.346666a10.602667 10.602667 0 0 1-2.197333-3.968l1.472 3.2c4.522667 8.064-16.853333 38.122667-51.562667 68.714667a626.624 626.624 0 0 1-20.544 17.344 21.333333 21.333333 0 1 0 26.453334 33.450667 669.056 669.056 0 0 0 22.293333-18.794667c52.48-46.293333 80.661333-85.866667 60.544-121.642667l1.472 3.2c-6.037333-16.64-32.277333-31.274667-91.306667-58.261333-6.613333-3.050667-13.546667-6.144-20.736-9.322667a2876.629333 2876.629333 0 0 0-101.610666-42.538666c-17.109333-6.912-40.874667-4.416-56.234667 5.930666l-69.546667 46.933334 10.922667-3.626667c0.576-0.021333-0.554667-0.149333-2.986667-0.725333a92.693333 92.693333 0 0 1-19.306666-7.424c-23.68-11.776-52.693333-33.792-87.04-68.778667-51.797333-52.757333-65.322667-80.490667-63.317334-87.445333a16.021333 16.021333 0 0 1-1.92 4.074666l46.741334-69.376c10.474667-15.573333 12.586667-39.530667 5.013333-56.725333l-4.138667-9.365333a3937.258667 3937.258667 0 0 0-46.122666-100.202667c-3.029333-6.293333-5.973333-12.416-8.874667-18.304-30.997333-63.082667-48.512-93.290667-64.213333-100.48-18.922667-11.157333-42.261333-4.672-67.456 12.992-10.922667 7.658667-22.186667 17.472-33.642667 28.970667a456.597333 456.597333 0 0 0-37.610667 42.88c-16.853333 19.712-30.805333 57.173333-31.509333 84.906666l0.341333-3.349333c-0.277333 1.493333-0.597333 3.797333-0.896 6.954667-3.050667 31.893333 1.877333 75.818667 20.821334 129.621333 27.946667 79.466667 81.664 164.736 166.912 253.781333 88.490667 92.416 175.765333 148.330667 258.773333 174.805334 27.797333 8.853333 53.888 13.952 77.973333 15.957333a21.333333 21.333333 0 0 0 3.52-42.517333 310.570667 310.570667 0 0 1-68.522666-14.08z"
+                                        fill="#3D3D3D" p-id="6543"></path>
+                                </svg>
+
+                                <p class="card-text">电话: ${element[3]}</p>
+
+
+                            </div>
+                        </div>
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            `
+
+
+
+        });
+
+
+        console.log(data);
+
+    })
+
+
+
+</script>
+
+
+
+</html>
+
+
+
+
+
+
+
+
+
+<!-- 
+
+
+<div class="form-group">
+    <label for="exampleInputEmail1">请输入书名</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <small id="emailHelp" class="form-text text-muted">请勿虽坏书籍</small>
+</div> -->

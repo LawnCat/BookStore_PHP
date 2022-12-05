@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理登录系统</title>
+    <link rel="stylesheet" href="../../static/css/admin/login.css">
+</head>
+
+<body>
+
+    <!-- 登录框架 -->
+    <div class="main">
+
+
+        <!-- 头部 -->
+        <div class="head">
+            <span>管理员登录</span>
+        </div>
+        <form action="../../controllers/admin/login.php" method="post">
+            <!-- 账号部分    -->
+            <div class="account">
+                <span> <span></span> 姓名</span>
+                <br>
+                <input type="text" placeholder="   请输入姓名" name="adminName">
+            </div>
+            <!-- 密码部分 -->
+            <div class="password">
+                <span> <span></span> 密码</span>
+                <br>
+                <input type="password" placeholder="   请输入密码" name="adminPassword">
+            </div>
+            <!-- 忘记密码 -->
+            <div class="forget" onclick="forget()">
+                <span>忘记密码?</span>
+            </div>
+            <!-- 最下方登录注册按钮 -->
+            <div class="bottom">
+                <!-- 登录 -->
+                <div class="sign" onclick="sign()">
+                    <!-- <span>登录</span> -->
+                    <button class="btn_" type="submit">登录</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</body>
+
+</html>
